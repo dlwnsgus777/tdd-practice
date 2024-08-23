@@ -33,7 +33,7 @@ public class AccountControllerTest {
 
 		// WHEN
 		MockHttpServletResponse response = mockMvc.perform
-						(post("/api/v1/accounts/sigh-in")
+						(post("/api/v1/accounts/sign-in")
 								 .contentType(MediaType.APPLICATION_JSON)
 								 .content(objectMapper.writeValueAsBytes(request)))
 				.andReturn()
