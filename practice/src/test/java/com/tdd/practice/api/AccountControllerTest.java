@@ -1,6 +1,7 @@
 package com.tdd.practice.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tdd.practice.api.dto.SignInRequest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,13 +27,17 @@ public class AccountControllerTest {
 	@DisplayName("회원가입 요청에 성공한다")
 	public void testSignIn() throws Exception {
 		// GIVEN
-		SignInRequest request = new SignInRequest();
+		String password = "abcd!@#$";
+		String email = "test@test.com";
+		SignInRequest request = new SignInRequest(email, password);
 
 		// WHEN
-		MockHttpServletResponse response = mockMvc.perform(post("/api/v1/accounts/sigh-in")
-																   .contentType(MediaType.APPLICATION_JSON)
-																   .content(objectMapper.writeValueAsBytes(request)))
-				.andReturn().getResponse();
+		MockHttpServletResponse response = mockMvc.perform
+						(post("/api/v1/accounts/sigh-in")
+								 .contentType(MediaType.APPLICATION_JSON)
+								 .content(objectMapper.writeValueAsBytes(request)))
+				.andReturn()
+				.getResponse();
 
 		// THEN
 		assertThat(response.getStatus()).isEqualTo(200);
