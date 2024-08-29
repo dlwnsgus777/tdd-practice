@@ -1,8 +1,7 @@
 package com.tdd.practice.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tdd.practice.api.dto.SignInRequest;
-import org.assertj.core.api.Assertions;
+import com.tdd.practice.account.api.dto.SignInRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
