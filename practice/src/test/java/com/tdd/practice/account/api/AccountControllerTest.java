@@ -1,4 +1,4 @@
-package com.tdd.practice.api;
+package com.tdd.practice.account.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tdd.practice.account.api.dto.SignInRequest;
