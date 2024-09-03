@@ -2,7 +2,9 @@ package com.tdd.practice.application;
 
 import com.tdd.practice.account.api.dto.SignInRequest;
 import com.tdd.practice.account.application.SignInFacade;
+import com.tdd.practice.account.model.service.AccountService;
 import com.tdd.practice.account.model.service.out.UserDto;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class SignInFacadeTest {
-	@Autowired
 	private SignInFacade signInFacade;
 
 	@Test
@@ -28,5 +29,4 @@ class SignInFacadeTest {
 		// THEN
 		assertThat(result.getEmail()).isEqualTo(email);
 	}
-
 }
