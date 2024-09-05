@@ -6,7 +6,6 @@ import com.tdd.practice.account.model.service.out.UserDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class AccountServiceTest {
 	private AccountService accountService = new AccountServiceImpl();
@@ -22,10 +21,5 @@ class AccountServiceTest {
 
 		// THEN
 		assertThat(result.isPresent()).isTrue();
-
-	}
-
-
-	private static class AccountServiceImpl implements AccountService {
 	}
 }
