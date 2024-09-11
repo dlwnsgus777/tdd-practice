@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepository {
-	Optional<Account> findByEmail(long id);
+	Optional<Account> findByEmail(String email);
 
 	Account save(Account account);
 }

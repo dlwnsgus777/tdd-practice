@@ -41,5 +41,4 @@ public class AccountControllerTest {
 		// THEN
 		assertThat(response.getStatus()).isEqualTo(200);
 	}
-
 }

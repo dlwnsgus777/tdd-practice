@@ -3,6 +3,7 @@ package com.tdd.practice.account.model.service;
 import java.util.Optional;
 
 import com.tdd.practice.account.infra.AccountRepository;
+import com.tdd.practice.account.model.domain.Account;
 import com.tdd.practice.account.model.service.out.AccountDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Optional<AccountDto> findByEmail(String email) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		Optional<Account> result = accountRepository.findByEmail(email);
+		return result.map(AccountDto::of);
 	}
 }
