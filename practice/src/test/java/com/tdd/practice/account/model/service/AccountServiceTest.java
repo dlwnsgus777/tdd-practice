@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.tdd.practice.account.infra.AccountRepository;
 import com.tdd.practice.account.infra.DefaultAccountRepository;
 import com.tdd.practice.account.model.domain.Account;
+import com.tdd.practice.account.model.service.in.SaveAccountInput;
 import com.tdd.practice.account.model.service.out.AccountDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,4 +35,24 @@ public class AccountServiceTest {
 		assertThat(result.isPresent()).isTrue();
 	}
 
+
+	@Test
+	@DisplayName("유저를 저장한다")
+	public void saveAccountTest() {
+		// GIVEN
+		String email = "test@test.com";
+		SaveAccountInput saveAccountInput = new SaveAccountInput(
+				email,
+				"password"
+		);
+
+		// WHEN
+		AccountDto result = accountService.save(saveAccountInput);
+
+		// THEN
+		assertThat(result).isNotNull();
+		assertThat(result.getId()).isNotNull();
+		assertThat(result.getEmail()).isEqualTo(email);
+
+	}
 }
