@@ -22,6 +22,11 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public AccountDto save(SaveAccountInput saveAccountInput) {
-		throw new UnsupportedOperationException("Not implemented yet");
+		Account result = accountRepository.save(Account.builder()
+														.email(saveAccountInput.email())
+														.password(saveAccountInput.password())
+														.build());
+
+		return AccountDto.of(result);
 	}
 }

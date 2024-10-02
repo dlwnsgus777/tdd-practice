@@ -11,6 +11,7 @@ import com.tdd.practice.account.model.service.out.AccountDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,7 +23,7 @@ class SignInFacadeTest {
 	@BeforeEach
 	void setUp() {
 		AccountService accountService = new AccountServiceImpl(accountRepository);
-		this.signInFacade = new SignInFacade(accountService);
+		this.signInFacade = new SignInFacade(accountService, new BCryptPasswordEncoder());
 	}
 
 	@Test
