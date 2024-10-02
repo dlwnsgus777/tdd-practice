@@ -39,6 +39,7 @@ class SignInFacadeTest {
 
 		// THEN
 		assertThat(result.getEmail()).isEqualTo(email);
+		assertThat(result.getPassword()).isNotEqualTo(password);
 	}
 
 	@Test
