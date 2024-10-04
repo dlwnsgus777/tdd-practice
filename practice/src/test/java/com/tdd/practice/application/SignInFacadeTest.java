@@ -3,7 +3,6 @@ package com.tdd.practice.application;
 import com.tdd.practice.account.api.dto.SignInRequest;
 import com.tdd.practice.account.application.SignInFacade;
 import com.tdd.practice.account.infra.AccountRepository;
-import com.tdd.practice.account.infra.DefaultAccountRepository;
 import com.tdd.practice.account.model.domain.Account;
 import com.tdd.practice.account.model.service.AccountService;
 import com.tdd.practice.account.model.service.AccountServiceImpl;
@@ -11,14 +10,20 @@ import com.tdd.practice.account.model.service.out.AccountDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SpringBootTest
+@Transactional
 class SignInFacadeTest {
 	private SignInFacade signInFacade;
-	private AccountRepository accountRepository = new DefaultAccountRepository();
+	@Autowired
+	private AccountRepository accountRepository;
 
 	@BeforeEach
 	void setUp() {
