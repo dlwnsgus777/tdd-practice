@@ -41,4 +41,31 @@ public class AccountControllerTest {
 		// THEN
 		assertThat(response.getStatus()).isEqualTo(200);
 	}
+
+	@Test
+	@DisplayName("로그인에 성공한다")
+	public void testSignUp() throws Exception {
+		// GIVEN
+		String password = "abcd!@#$";
+		String email = "test@test.com";
+		SignUpRequest request = new SignUpRequest(email, password);
+
+		// WHEN
+		MockHttpServletResponse response = mockMvc.perform
+						(post("/api/v1/accounts/sign-up")
+								 .contentType(MediaType.APPLICATION_JSON)
+								 .content(objectMapper.writeValueAsBytes(request)))
+				.andReturn()
+				.getResponse();
+
+		// THEN
+		SignUpResponse responseBody = objectMapper.readValue(response.getContentAsString(), SignUpResponse.class);
+		assertThat(response.getStatus()).isEqualTo(200);
+	}
+
+	private record SignUpRequest(String email, String password) {
+	}
+
+	private record SignUpResponse(String token) {
+	}
 }
