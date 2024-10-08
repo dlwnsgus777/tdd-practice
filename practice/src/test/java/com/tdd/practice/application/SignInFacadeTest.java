@@ -1,6 +1,6 @@
 package com.tdd.practice.application;
 
-import com.tdd.practice.account.api.dto.SignInRequest;
+import com.tdd.practice.account.api.dto.request.SignInRequest;
 import com.tdd.practice.account.application.SignInFacade;
 import com.tdd.practice.account.infra.AccountRepository;
 import com.tdd.practice.account.model.domain.Account;

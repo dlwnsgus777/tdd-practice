@@ -1,7 +1,9 @@
 package com.tdd.practice.account.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tdd.practice.account.api.dto.SignInRequest;
+import com.tdd.practice.account.api.dto.request.SignInRequest;
+import com.tdd.practice.account.api.dto.request.SignUpRequest;
+import com.tdd.practice.account.api.dto.response.SignUpResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,11 +63,7 @@ public class AccountControllerTest {
 		// THEN
 		SignUpResponse responseBody = objectMapper.readValue(response.getContentAsString(), SignUpResponse.class);
 		assertThat(response.getStatus()).isEqualTo(200);
+		assertThat(responseBody.token()).isNotNull();
 	}
 
-	private record SignUpRequest(String email, String password) {
-	}
-
-	private record SignUpResponse(String token) {
-	}
 }

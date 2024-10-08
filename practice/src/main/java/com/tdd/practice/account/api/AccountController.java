@@ -1,6 +1,8 @@
 package com.tdd.practice.account.api;
 
-import com.tdd.practice.account.api.dto.SignInRequest;
+import com.tdd.practice.account.api.dto.request.SignInRequest;
+import com.tdd.practice.account.api.dto.request.SignUpRequest;
+import com.tdd.practice.account.api.dto.response.SignUpResponse;
 import com.tdd.practice.account.application.SignInFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,11 @@ public class AccountController {
 	@PostMapping("/sign-in")
 	public ResponseEntity<Void> signIn(@RequestBody SignInRequest request) {
 		signInFacade.execute(request);
+		return ResponseEntity.ok().build();
+	}
+
+	@PostMapping("/sign-in")
+	public ResponseEntity<SignUpResponse> signIn(@RequestBody SignUpRequest request) {
 		return ResponseEntity.ok().build();
 	}
 }
