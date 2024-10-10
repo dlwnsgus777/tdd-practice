@@ -4,6 +4,7 @@ import com.tdd.practice.account.api.dto.request.SignInRequest;
 import com.tdd.practice.account.api.dto.request.SignUpRequest;
 import com.tdd.practice.account.api.dto.response.SignUpResponse;
 import com.tdd.practice.account.application.SignInFacade;
+import com.tdd.practice.account.application.SignUpFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AccountController {
 	private final SignInFacade signInFacade;
+	private final SignUpFacade signUpFacade;
 
 	@PostMapping("/sign-in")
 	public ResponseEntity<Void> signIn(@RequestBody SignInRequest request) {
@@ -23,7 +25,7 @@ public class AccountController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PostMapping("/sign-in")
+	@PostMapping("/sign-up")
 	public ResponseEntity<SignUpResponse> signIn(@RequestBody SignUpRequest request) {
 		return ResponseEntity.ok().build();
 	}
