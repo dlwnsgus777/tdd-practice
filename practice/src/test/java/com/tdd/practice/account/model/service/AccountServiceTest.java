@@ -20,12 +20,8 @@ public class AccountServiceTest {
 	@Autowired
 	private AccountRepository accountRepository;
 
+	@Autowired
 	private AccountService accountService;
-
-	@BeforeEach
-	void setUp() {
-		accountService = new AccountServiceImpl(accountRepository);
-	}
 
 	@Test
 	@DisplayName("이메일을 통해 회원을 조회할 수 있다")
